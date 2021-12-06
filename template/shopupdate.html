@@ -1,0 +1,31 @@
+{% extends 'headerfooter.html' %}
+{% block content %}
+<div class="modal-content">
+				<div class="modal-header">
+<!-- 					<button type="button" class="close" data-dismiss="modal">&times;</button> -->
+
+					<div class="signin-form profile">
+						<h3 class="agileinfo_sign">Shops..</h3>
+						<div class="login-form">
+							{% for y in shops %}
+							<form action="/shopedit/?id={{y.id}}" method="POST">
+								 {% csrf_token %} 
+								<!-- <input type="text" name="name" placeholder="Username" required=""> -->
+								<input type="text" name="shopname" value="{{y.shopname}}">
+								<input type="text" name="address" value="{{y.address}}">
+								<input type="text" name="phoneno" value="{{y.phoneno}}">
+								<input type="email" name="email" value="{{y.email}}">
+								<input type="password" class="password" name="password" id="password1" 
+								value="{{y.password}}" />
+								<!-- <input type="password" class="password" name="password2" id="password2" value="{{y.password2}}" 
+								/> -->
+								{% endfor %}
+								<input type="submit" value="UPDATE">
+							</form>
+						</div>
+						<!-- <p><a href="#"> By clicking register, I agree to your terms</a></p> -->
+					</div>
+				</div>
+			</div>
+
+{% endblock%}	

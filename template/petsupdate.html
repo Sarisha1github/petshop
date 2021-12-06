@@ -1,0 +1,56 @@
+{% extends 'headerfooter.html' %}
+{% block content %}
+
+
+<div class="modal-content">
+
+
+
+				<div class="modal-header">
+
+					<div class="signin-form profile">
+						<h3 class="agileinfo_sign">Pets</h3>
+						<div class="login-form">
+							{% for y in pets %}
+							<form action="/petsedit/?id={{y.id}}" method="POST" enctype="multipart/form-data">
+								 {% csrf_token %} 
+								 <label for="cars">Category:</label>
+
+                                 <select name="category" id="">
+                                 <option selected value="{{y.category}}">{{y.category}}</option>
+                                  <option value="dog">Dog</option>
+                                 <option value="cat">Cat</option>
+                                 <option value="birds">Birds</option>
+                                 </select><br>
+								
+								<input type="text" name="name" value="{{y.name}}">
+								<label for="cars">Gender</label>
+								<input type="radio" value="Male" name="gender" {%if y.gender == 'Male' %} checked {% else %} {% endif %}> Male   
+								<input type="radio" value="Male" name="gender" {%if y.gender == 'Female' %} checked {% else %} {% endif %}> Female 
+                              
+								<input type="text" name="age" value="{{y.age}}">
+								
+								<input type="text" name="colour" value="{{y.colour}}">
+								
+								<input type="text" name="description" value="{{y.description}}">
+								
+								<input type="text" name="price" value="{{y.price}}" /><br>
+								<label>Do you want to update image:</label>
+								<input type="radio" name="img" value="Yes" checked> Yes
+								<input type="radio" name="img" value="No" checked> No
+								<label for="myfile">File Input:</label>
+								<input type="file" name="myfile" id="myfile">
+                               <img src="{{y.file.url}}" width="75px" height="75px">
+                               {% endfor %}
+                               <input type="submit" value="UPDATE">
+								
+								
+							</form>
+							
+						</div>
+						
+					</div>
+				</div>
+			</div>
+
+{% endblock%}	s

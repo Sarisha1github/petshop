@@ -1,0 +1,57 @@
+{% extends 'admin/headerfooter.html' %}
+{% block content %}
+<title></title>
+	<style type="text/css">
+		table,th,td{
+			border: 2px solid white;
+			border-collapse: collapse;
+			padding: 5px;
+			
+
+
+		}
+		table{
+			width: 100%;
+		}
+		th{
+			background-color: lightgreen;
+			height: 70px;
+			color: white;
+			
+		}
+		tr:hover{background-color: lightgrey}
+		tr:nth-child(even){background-color: lightgrey}
+	</style>
+	<body>
+		<div  style="overflow-x:auto;">
+	<table class="table">
+		<h2><center>USERS</center> </h2>
+  <thead>
+
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Email</th>
+     <!--  <th scope="col">Password</th> -->
+      <th>edit</th>
+      <th>delete</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<tr>
+  		{% for x in data %}
+  		<td>{{forloop.counter}}</td>
+  		<td>{{x.username}}</td>
+  		<td>{{x.phoneno}}</td>
+  		<td>{{x.email}}</td>
+  		<!-- <td>{{x.password}}</td> -->
+  		<td><a href="/usersupdate/?id={{x.id}}">update</a></td>
+  		<td><a href="/delete/?id={{x.id}}">delete</a></td>
+  	</tr>
+  	{% endfor %}
+    </tbody>
+</table>
+</div>
+</body>
+{% endblock%}

@@ -1,0 +1,56 @@
+{% extends 'headerfooter.html' %}
+{% block content %}
+<div class="about agileinfo">
+		<div class="container">
+			<h3 class="agileits-title"></h3>
+			{% for y in pets %}
+			<div class="markets-grids">
+
+				<div class="col-md-6 about-w3left">
+					<h4>{{y.name}}<br> </h4>
+					<p>{{y.description}}</p>
+					<p>{{y.age}}</p>
+					<p>{{y.gender}}</p>
+					<p>{{y.color}}</p>
+					<p>{{y.quantity}}</p>
+					<p>{{y.price}}</p>
+
+					<!-- <a href="single.html" class="button button-isi"><span>Read More</span><i class="icon glyphicon glyphicon-arrow-right"></i></a> -->
+				</div>
+				<form action="/pets_addcart/?id={{y.id}}" method="post">
+						{% csrf_token %}
+					<div class="color-quality">
+						<div class="color-quality-right">
+							<h5>Quantity :</h5><br>
+							<select id="country1"  name="qty" class="frm-field required sect">
+								<option value="1">1 Qty</option>
+								<option value="2">2 Qty</option> 
+								<option value="3">3 Qty</option> 
+								<option value="4">4 Qty</option> 
+								<option value="5">5 Qty</option> 
+								<option value="6">6 Qty</option> 
+								<option value="7">7 Qty</option>
+								<option value="8">8 Qty</option> 
+								<option value="9">9 Qty</option> 											
+								<option value="10">10 Qty</option>								
+							</select>
+						</div>
+						<!-- <div >
+					<input type="submit" name="submit" value="Add to cart" class="button"></div>
+					</div> -->
+				<div class="col-md-6 about-w3right">
+					<img src="{{y.file.url}}" alt="" width="350px" height="250px" style="object-fit: contain;" />
+				</div>
+				<div >
+					<input type="submit" name="submit" value="Add to cart" class="button"><br><br><br>
+					<!-- <a href="/cart/" class="link-product-add-cart">Add to Cart</a> -->
+				<!-- <a href="/product_single/?id={{x.id}}" class="link-product-add-cart">Add to Cart</a> -->
+												</div>
+				<div class="clearfix"> </div>
+
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+
+{% endblock%}	

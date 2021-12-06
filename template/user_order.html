@@ -1,0 +1,61 @@
+{% extends 'headerfooter.html' %}
+{% block content %}
+
+<title></title>
+	<style type="text/css">
+		table,th,td{
+			border: 2px solid white;
+			border-collapse: collapse;
+			padding: 5px;
+			
+
+
+		}
+		table{
+			width: 100%;
+		}
+		th{
+			background-color: lightgreen;
+			height: 70px;
+			color: white;
+			
+		}
+		tr:hover{background-color: lightgrey}
+		tr:nth-child(even){background-color: lightgrey}
+</style>
+<body>
+	<div  style="overflow-x:auto;">
+	<table class="table">
+		<h2><center>Your Orders</center> </h2>
+  <thead>
+    <tr>
+      <th scope="col" style="color: white;">#</th>
+      <th scope="col" style="color: white;">IMAGE</th>
+      <th scope="col" style="color: white;">PRODUCT NAME</th>
+      <th scope="col" style="color: white;">PRICE</th>
+      <th scope="col" style="color: white;">TOTAL PRICE</th>
+      <th scope="col" style="color: white;">QTY</th>
+      <th scope="col" style="color: white;">STATUS</th>
+    </tr>
+    </thead>
+  <tbody>
+    <tr>
+      {% for x in query %}
+      <th scope="row">{{forloop.counter}}</th>
+      <td><img src="{{x.pid.file.url}}" style="object-fit: contain; width: 100px;
+      height: 100px"></td>
+      <td>{{x.pid.name}}</td>
+      <td>&#8377;{{x.unitprice}}</td>
+      <td>&#8377;{{x.total}}</td>
+
+      <td>{{x.quantity}}</td>
+      <td>{{x.status}}</td>
+  </tr>
+    {% endfor %}
+
+     </tbody>
+</table>
+</div>
+</div>
+</body>
+{% endblock%}

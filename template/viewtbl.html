@@ -1,0 +1,135 @@
+{% extends 'headerfooter.html' %}
+{% block content %}
+
+<title></title>
+	<style type="text/css">
+		table,th,td{
+			border: 2px solid white;
+			border-collapse: collapse;
+			padding: 5px;
+			
+
+
+		}
+		table{
+			width: 100%;
+		}
+		th{
+			background-color: lightgreen;
+			height: 70px;
+			color: white;
+			
+		}
+		tr:hover{background-color: lightgrey}
+		tr:nth-child(even){background-color: lightgrey}
+	</style>
+
+
+<body>
+	<div  style="overflow-x:auto;">
+	<table class="table">
+		<h2><center>USERS</center> </h2>
+  <thead>
+
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Email</th>
+     <!--  <th scope="col">Password</th> -->
+      <th>edit</th>
+      <th>delete</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<tr>
+  		{% for x in data %}
+  		<td>{{forloop.counter}}</td>
+  		<td>{{x.username}}</td>
+  		<td>{{x.phoneno}}</td>
+  		<td>{{x.email}}</td>
+  		<!-- <td>{{x.password}}</td> -->
+  		<td><a href="/usersupdate/?id={{x.id}}">update</a></td>
+  		<td><a href="/delete/?id={{x.id}}">delete</a></td>
+  	</tr>
+  	{% endfor %}
+    </tbody>
+</table>
+</div>
+
+<div  style="overflow-x:auto;">
+	<table class="table">
+		<h2><center>SHOPS</center> </h2>
+  <thead>
+
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">ShopName</th>
+      <th scope="col">Address</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Email</th>
+     <!--  <th scope="col">Password</th> -->
+      <th>edit</th>
+      <th>delete</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<tr>
+  		{% for x in data1 %}
+  		<td>{{forloop.counter}}</td>
+  		<td>{{x.shopname}}</td>
+  		<td>{{x.address}}</td>
+  		<td>{{x.phoneno}}</td>
+  		<td>{{x.email}}</td>
+  		<!-- <td>{{x.password}}</td> -->
+  		<td><a href="/shopupdate/?id={{x.id}}">update</a></td>
+  		<td><a href="/delete/?id={{x.id}}">delete</a></td>
+  	</tr>
+  	{% endfor %}
+    </tbody>
+</table>
+</div>
+
+
+<div  style="overflow-x:auto;">
+	<table class="table">
+		<h2><center>PETS</center> </h2>
+  <thead>
+
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Category</th>
+      <th scope="col">Name</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Age</th>
+      <th scope="col">Colour</th>
+      <th scope="col">Description</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+      <th scope="col">Images</th>
+      <th>edit</th>
+      <th>delete</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<tr>
+  		{% for x in data2 %}
+  		<td>{{forloop.counter}}</td>
+  		<td>{{x.category}}</td>
+  		<td>{{x.name}}</td>
+  		<td>{{x.gender}}</td>
+  		<td>{{x.age}}</td>
+  		<td>{{x.colour}}</td>
+  		<td>{{x.description}}</td>
+      <td>{{x.quantity}}</td>
+  		<td>{{x.price}}</td>
+  		<td><img src="{{x.file.url}}" width="25px" height="25px"></td>
+  		<td><a href="/petsupdate/?id={{x.id}}">update</a></td>
+  		<td><a href="/delete/?id={{x.id}}">delete</a></td>
+  	</tr>
+  	{% endfor %}
+    </tbody>
+</table>
+</div>
+</body>
+{% endblock%}
